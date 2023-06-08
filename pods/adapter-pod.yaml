@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: adapter-pod
+  labels:
+    strategy: adapter
+spec:
+  restartPolicy: Always
+  volumes:
+    - name: files-vol
+      emptyDir: {}
+  containers:
+    - image: angelgoez/multipod-adapter-api
+      name: generator
+      imagePullPolicy: Always
+      resources: {}
+      volumeMounts:
+        - name: files-vol
+          mountPath: /app/files
+      ports:
+        - containerPort: 8080
+    - image: busybox
+      name: transformer
+      imagePullPolicy: Always
+      resources: {}
+      volumeMounts:
+        - name: files-vol
+          mountPath: /files
+      command:
+        - "sh"
+        - "-c"
+        - "while true; do ls /files; sleep 60; done"
+    
