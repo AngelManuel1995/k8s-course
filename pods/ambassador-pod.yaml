@@ -3,8 +3,9 @@ kind: Pod
 metadata:
   name: ambassador-pod
   labels:
-    app: ambassador
+    strategy: ambassador
 spec:
+  restartPolicy: Always
   containers:
     - image: angelgoez/multipod-ambassador-proxy
       name: proxy
