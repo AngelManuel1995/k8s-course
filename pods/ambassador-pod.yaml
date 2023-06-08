@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ambassador-pod
+  labels:
+    app: ambassador
+spec:
+  containers:
+    - image: angelgoez/multipod-ambassador-proxy
+      name: proxy
+      imagePullPolicy: Always
+      resources: {}
+      ports:
+        - containerPort: 80
+    - image: angelgoez/multipod-ambassador-api
+      name: api
+      imagePullPolicy: Always
+      resources: {}
+      ports:
+        - containerPort: 8080
