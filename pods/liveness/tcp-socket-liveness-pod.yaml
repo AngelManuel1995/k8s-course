@@ -1,0 +1,28 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: liveness-socket
+  labels:
+    category: pod
+spec:
+  volumes:
+    - name: vol
+      emptyDir: {}
+  containers:
+    - name: backend
+      image: angelgoez/api-liveness-socket
+      imagePullPolicy: Always
+      livenessProbe:
+        tcpSocket:
+          port: 8081
+        periodSeconds: 10
+        initialDelaySeconds: 0
+        timeoutSeconds: 1
+      resources: {}
+      volumeMounts:
+        - name: vol
+          mountPath: /example
+      ports:
+        - containerPort: 8080
+...

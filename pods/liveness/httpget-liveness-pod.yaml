@@ -1,0 +1,24 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: httpget-pod
+spec:
+  volumes:
+    - name: httpget-pod
+      emptyDir: {}
+  containers:
+    - image: angelgoez/api-liveness-httpget
+      name: httpget-pod
+      resources: {}
+      volumeMounts:
+        - name: httpget-pod
+          mountPath: /httpget-pod
+      ports:
+        - containerPort: 8080
+      livenessProbe:
+        httpGet:
+          port: 8080
+          path: /healthcheck
+        initialDelaySeconds: 1
+        periodSeconds: 5

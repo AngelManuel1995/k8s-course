@@ -1,0 +1,29 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: liveness-exec
+  labels:
+    category: pod
+spec:
+  volumes:
+    - name: vol3
+      emptyDir: {}
+  containers:
+    - image: angelgoez/api-liveness-exec
+      name: backend-exec
+      resources: {}
+      imagePullPolicy: Always
+      livenessProbe:
+        exec:
+          command:
+            - "ls"
+            - "/app/files/config"
+        initialDelaySeconds: 0
+        periodSeconds: 10
+        timeoutSeconds: 1
+      ports:
+        - containerPort: 8080
+      volumeMounts:
+        - name: vol3
+          mountPath: /backend-exec 
