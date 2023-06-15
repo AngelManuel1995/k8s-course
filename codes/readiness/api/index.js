@@ -13,7 +13,9 @@ api.get('/healthcheck', (req, res) => {
   res.send('OK')
 })
 
-api.listen(8080, () => {
-  console.log("Application running up on port ", 8080)
-})
-
+console.log(`The Application will be ready to accept requests in ${60 * 1000} miliseconds`)
+setTimeout(() => {
+  api.listen(8080, () => {
+    console.log("Application running up on port ", 8080)
+  })  
+}, 60 * 1000);
