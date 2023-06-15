@@ -2,12 +2,26 @@
 
 1. Crear un Pod con la imagen de nginx
   ```
-    kubectl run nginx --image=nginx --port=80
+    kubectl run nginx --restart=Always  --image=nginx --port=80
   ```
 2. Crear un Pod con la imagen de busybox
+  ```
+    kubectl run busybox --restart=Never --image=busybox
+    kubectl run busybox --restart=Always --image=busybox
+  ```
 3. Crear un Pod que ejecute un comando
+  ```
+    kubectl run busybox --restart=Never --image=busybox -- echo "Hello k8s"
+  ```  
 4. Crear un Pod con la imagen de mongo y con el puerto del servicio
+  ```
+    kubectl run mongo --restart=Always --image=mongo --port=27017
+  ```
 5. Crear un Pod con la imagen de busybox con una variable de entorno
+ ```
+  kubectl run busybox --restart=Never --env=TEAM=EVOLUTION --image=busybox -- env
+  kubectl run busybox --restart=Never --env=TEAM=EVOLUTION --image=busybox --command -- env
+ ``` 
 6. Crear cinco Pods con el siguiente label environment=prod
 7. Crear cinco Pods con el siguiente label environment=devevelopment
 8. Crear cinco Pods con el siguiente label environment=testing
