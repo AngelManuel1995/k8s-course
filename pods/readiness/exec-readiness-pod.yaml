@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: exec-readiness-pod
+  labels:
+    type: pod
+spec:
+  volumes:
+    - name: exec-readiness-vol
+      emptyDir: {}
+  containers:
+    - name: exec-readiness-pod
+      image: angelgoez/api-readiness-exec
+      ports:
+        - containerPort: 8080
+      resources: {}
+      volumeMounts:
+        - name: exec-readiness-vol
+          mountPath: /volume
+      readinessProbe:
+        initialDelaySeconds: 0
+        periodSeconds: 10
+        timeoutSeconds: 1
+        exec:
+          command:
+            - "cat"
+            - "/app/files/healthcheck"
+
