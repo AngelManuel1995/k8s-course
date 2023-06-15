@@ -1,6 +1,9 @@
 ## Ejercicios:
 
 1. Crear un Pod con la imagen de nginx
+  ```
+    kubectl run nginx --image=nginx --port=80
+  ```
 2. Crear un Pod con la imagen de busybox
 3. Crear un Pod que ejecute un comando
 4. Crear un Pod con la imagen de mongo y con el puerto del servicio
