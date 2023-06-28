@@ -5,9 +5,17 @@ metadata:
 spec:
   template:
     metadata:
-      labels: batch-jobs
-  containers:
-    - name: backup-dababase
-      image: mongo:4.2.9
-      command:
+      labels: 
+        name: backup-dababase
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: backup-dababase
+          image: mongo:4.2.9
+          command: ["bash", "-c"]
+          args:
+            - |
+              mongodump --host=prod-database-cluster-ip-service --port=27017 --username=root --password=toor --authenticationDatabase=admin --db=prod --out=/backups 
+              sleep 5 
+              mongorestore --host=dev-database-cluster-ip-service --port=27017 --username=root_dev --password=toor_dev --authenticationDatabase=admin --db=dev --dir=/backups/prod --drop
 
