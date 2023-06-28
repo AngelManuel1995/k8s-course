@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: backup-dababase
+spec:
+  template:
+    metadata:
+      labels: batch-jobs
+  containers:
+    - name: backup-dababase
+      image: mongo:4.2.9
+      command:
+
