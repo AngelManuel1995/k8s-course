@@ -1,0 +1,2 @@
+cuando el restartPolicy es Never y los completions es mayor a uno siempre se van a ejecutar en número de completions establecidos en el parámetro de completions así fallen y se completen.
+Cuando el restartPolicy es OnFailure y los completions es matoy a uno siempre se van a ejecutar en número de completions ejecutar en el parámetro de completions pero con contenedores se reinician hasta que todos esten completos como correctos.

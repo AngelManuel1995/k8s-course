@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: random-failure-job
+  labels:
+    kind: job
+spec:
+  completions: 5
+  template:
+    metadata:
+      name: random-failure-pod
+    spec:
+      restartPolicy: Never
+      containers:
+        - image: angelgoez/random-failure
+          name: random-failure-container
+          imagePullPolicy: Always
