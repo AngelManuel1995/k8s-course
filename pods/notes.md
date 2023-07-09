@@ -19,3 +19,4 @@
   * los de los últimos 10 minutos
   * los del pod anterior.
   * con la fecha que fueron creados.
+17. Copiar un archivo a un pod y desde un pod
