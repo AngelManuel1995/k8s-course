@@ -75,3 +75,23 @@
             - "sleep 9999"
   ```
 15. Probar la conexión entre dos contenedores dentro del mismo pod mediante localhost
+16. Mirar los logs de un pod
+  ```bash
+    kubectl logs pod
+  ```
+  * solo 50 lineas
+    ```bash
+      kubectl logs pod --tail=50
+    ```
+  * los de los últimos 10 minutos
+    ```bash
+      kubectl logs pod --since=10m
+    ```
+  * los del pod anterior.
+    ```bash
+      kubectl logs pod --since=10m
+    ```
+  * con la fecha que fueron creados.
+    ```bash
+    kubectl logs pod --timestamps
+    ```
