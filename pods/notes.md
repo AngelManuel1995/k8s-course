@@ -95,3 +95,9 @@
     ```bash
     kubectl logs pod --timestamps
     ```
+17. Copiar un archivo a un pod y desde un pod
+  ```bash
+    kubectl cp nginx:/usr/share/nginx/html/index.html ./index.html
+
+    kubectl cp index.html nginx:/usr/share/nginx/html/index.html
+  ```
